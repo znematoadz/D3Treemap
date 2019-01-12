@@ -1,0 +1,103 @@
+$m: 0; // margin
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.tooltip {
+  background-color: #f8f6ef;
+  position: absolute;
+  opacity: 0;
+  color: #191919;
+  font-size: 20px;
+  padding: 5px;
+  pointer-events: none;
+  border: 2px solid #8f8779;
+  border-radius: 3px;
+}
+nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 16px;
+  z-index: 100;
+
+  .up {
+    font: bold 14px/1 sans-serif;
+    color: white;
+    width: 92px;
+    padding: 8px;
+    background-color: rgba(53, 52, 52, 0.8);
+    float: right;
+    cursor: pointer;
+    box-shadow: 3px 3px 10px #191919;
+    &:hover {
+      background-color: rgba(218, 211, 212, 0.8);
+      color: #191919;
+    }
+  }
+}
+.features {
+  position: relative;
+  width: calc(100% - #{$m} * 2 * 1px);
+  height: calc(100% - #{$m} * 2 * 1px);
+  margin: $m * 1px;
+
+  overflow: hidden;
+}
+.tile {
+  position: absolute;
+  background: transparent url("") no-repeat 50% / cover;
+  overflow: hidden;
+  opacity: 0.8;
+  transition: opacity 0.8s;
+  cursor: pointer;
+  .label {
+    color: hsla(0, 0, 100, 0.6);
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    transition: color 0.4s, opacity 0.8s, filter 0.8s;
+  }
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+    .label {
+      filter: blur(10px);
+    }
+  }
+  &:hover {
+    .label {
+      color: hsla(0, 0, 100, 1);
+    }
+  }
+  &.level-0 {
+    z-index: 4;
+
+    display: none;
+  }
+  &.level-1 {
+    z-index: 3;
+  }
+  &.level-2 {
+    z-index: 2;
+  }
+  &.level-3 {
+    z-index: 1;
+  }
+}
